@@ -1,7 +1,7 @@
 import { pool } from '../helper/db.js'
 import { auth } from '../helper/auth.js'
 import { Router } from 'express'
-import { getTasks, postTask } from '../controllers/TaskController.js'
+import { delTask, getTasks, postTask } from '../controllers/TaskController.js'
 
 
 const router = Router()
@@ -37,7 +37,8 @@ router.post('/create', auth, (req, res, next) => {
 })
 */
 
-router.delete('/delete/:id', auth, (req, res, next) => {
+router.delete('/delete/:id', auth, delTask)
+/*
     const { id } = req.params
     
     console.log(`Deleting task with id: ${id}`)
@@ -54,5 +55,7 @@ router.delete('/delete/:id', auth, (req, res, next) => {
             return res.status(200).json({id:id})
     })
 })
+*/
+
 // Other routes (create, delete) here
 export default router
